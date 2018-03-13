@@ -86,7 +86,22 @@ body
 #content
 {
   background-color: #ce554a;
-  height: 800px;
+  padding: 20px;
+}
+
+#main-event
+{
+  width: 70%;
+  height: 500px;
+  background-color: white;
+  margin: auto;
+  margin-top: 20px;
+}
+
+h1
+{
+  text-align: center;
+  margin: 30px;
 }
 
 .row
@@ -132,8 +147,8 @@ body
 footer
 {
   background-color: #2d3134;
-  height: 50px;
   color: white;
   text-align: center;
-  padding: 10px;
+  padding: 20px;
+  font-size: 20px;
 }
