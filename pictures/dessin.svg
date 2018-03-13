@@ -29,7 +29,7 @@
      inkscape:cx="514.2829"
      inkscape:cy="187.52548"
      inkscape:document-units="mm"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="layer2"
      showgrid="false"
      inkscape:snap-grids="true"
      inkscape:window-width="1920"
@@ -69,7 +69,7 @@
      id="layer3"
      inkscape:label="Navion1">
     <path
-       style="fill:#ffd12d;fill-opacity:1;stroke:none;stroke-width:0.17745136px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="fill:#ffd871;fill-opacity:1;stroke:none;stroke-width:0.17745136px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        d="m 325.12738,217.09546 52.94789,113.79799 88.21176,-114.58087 z"
        id="path4556"
        inkscape:connector-curvature="0" />
@@ -79,7 +79,7 @@
      id="layer2"
      inkscape:label="Navion2">
     <path
-       style="fill:#e0b83c;fill-opacity:1;stroke:none;stroke-width:0.25009134;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:#e0b647;fill-opacity:1;stroke:none;stroke-width:0.25009134;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="m 343.33019,255.14576 -2.62615,41.22432 125.58299,-80.0575 z"
        id="path4552"
        inkscape:connector-curvature="0"
