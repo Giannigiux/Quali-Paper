@@ -124,6 +124,11 @@ body
   opacity: 0.7;
 }
 
+.col-sm-4 p img:hover
+{
+  opacity: 1;
+}
+
 footer
 {
   background-color: #2d3134;
