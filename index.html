@@ -2,18 +2,20 @@
 <html lang="fr">
     <head>
         <title>Evénements - QualiPaper</title>
-        <link rel="icon" type="image/png" href="images/dessin.svg" />
+        <link rel="icon" type="image/png" href="pictures/favicon.svg" />
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel="stylesheet" href="css/design.css" type="text/css"/>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
+        <script src="js/initFirebase.js"></script>
     </head>
 
     <body>
         <div id="connexion">
-          <img src="pictures/dessin.svg" />
+          <img src="pictures/logo.svg" />
           <div id="myForm">
             <p>
               <label for="pseudo">Pseudo</label><br />
@@ -33,7 +35,7 @@
 
         <div id="main">
           <div id="top">
-            <img src="pictures/dessin.svg" />
+            <img src="pictures/logo.svg" />
             <form id="search">
                 <input id="searchInput" type="text" placeholder="Rechercher" />
                 <input id="searchBtn" type="submit" value="Rechercher" />
@@ -43,7 +45,7 @@
           <nav class="navbar">
               <ul class="nav navbar-nav">
                   <li><a href="index.html" class="active">Accueil</a></li>
-                  <li><a href="#">Evénements</a></li>
+                  <li><a href="events.html">Evénements</a></li>
                   <li><a href="#">Exemple</a></li>
                   <li><a href="#">Exemple</a></li>
                   <li><a href="#">A propos</a></li>

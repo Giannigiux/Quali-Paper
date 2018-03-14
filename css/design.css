@@ -36,9 +36,9 @@ body
   margin: auto;
   margin-top: 0;
   width: 25%;
-  background-color: #ce554a;
-  color: white;
-  box-shadow: 1px 1px 12px #fff;
+  background-color: white;
+  color: black;
+  box-shadow: 1px 1px 5px #424141;
   padding: 10px;
 }
 
@@ -58,16 +58,19 @@ body
   height: 40px;
   color: black;
   padding: 5px;
+  background-color: #CECECE;
+  border: 0;
 }
 
 #connexion #myForm #sub
 {
   margin-top: 10px;
-  background-color: white;
-  color: black;
+  background-color: #3b84ad;
+  color: white;
   border: 0;
   height: 40px;
   width: 20%;
+  font-weight: bold;
 }
 
 #main
@@ -124,25 +127,25 @@ body
   margin-bottom: 0px;
   font-family: 'Jura', arial;
   font-weight: bold;
-  font-size: 15px;
+  font-size: 16px;
   border: 0px;
 }
 
 .navbar li a.active
 {
-  background-color: #ce554a;
+  background-color: #cecece;
   color: white;
 }
 
 .navbar li a:hover
 {
-  background-color: #ce554a;
+  background-color: #cecece;
   color: white;
 }
 
 #content
 {
-  background-color: #ce554a;
+  background-color: #cecece;
   padding: 20px;
 }
 
