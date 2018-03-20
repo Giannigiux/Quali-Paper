@@ -7,7 +7,7 @@ var     form = (function() {
 
   main.style.display = 'none';
 
-  sub.addEventListener('click', function(e) {
+  function  checkId() {
     var database = firebase.database();
     var usersRef = database.ref('users');
 
@@ -23,5 +23,15 @@ var     form = (function() {
     }, function(error) {
       console.log('Error: ' + error.code);
     });
+  }
+
+  document.addEventListener('keypress', function(event) {
+    if (event.key === 'Enter') {
+      checkId();
+    }
+  });
+
+  sub.addEventListener('click', function(e) {
+    checkId();
   });
 })();

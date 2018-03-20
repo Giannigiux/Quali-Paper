@@ -10,18 +10,68 @@
     src: url('../fonts/Jura-Regular.ttf') format('truetype');
 }
 
+html
+{
+  height: 100%;
+}
+
 body
 {
+  min-height: 100%;
+  padding: 0;
+  margin: 0;
   font-family: 'Jura', arial;
+  background-color: #cecece;
+  position: relative;
+}
+
+.modal-content
+{
+  padding-bottom: 20px;
+}
+
+.modal-header
+{
   background-color: #3b84ad;
+  color: white;
+  text-align: center;
+}
+
+.modal-title
+{
+  font-weight: bold;
+}
+
+.modal-body
+{
+  padding: 30px;
+  font-size: 18px;
+}
+
+.modal-body input, select
+{
+  float: right;
+  height: 30px;
+  width: 300px;
+  background-color: #ECF7FD;
+  border: 0;
+  border: 1px solid #3b84ad;
+}
+
+.modal-body #valider
+{
+  background-color: #3b84ad;
+  color: white;
+  font-weight: bold;
 }
 
 #connexion
 {
   width: 100%;
-  height: 40vw;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background-color: #3b84ad
 }
 
 #connexion img
@@ -77,6 +127,7 @@ body
 {
   display: flex;
   flex-direction: column;
+  background-color: #cecece;
 }
 
 #top
@@ -145,8 +196,27 @@ body
 
 #content
 {
-  background-color: #cecece;
   padding: 20px;
+}
+
+#plus
+{
+  width: 340px;
+  font-size: 25px;
+  border: 2px solid white;
+  background-color: white;
+  border-radius: 25px;
+}
+
+#plus:hover
+{
+  cursor: pointer;
+}
+
+#plus img
+{
+  width: 50px;
+  margin-right: 5px;
 }
 
 #main-event
@@ -176,6 +246,7 @@ h1
   margin: auto;
   width: 33.3%;
   text-align: center;
+  margin-bottom: 100px;
 }
 
 .col-sm-4 h3
@@ -205,11 +276,41 @@ h1
   cursor: pointer;
 }
 
+.col-sm-3
+{
+  margin-top: 20px;
+}
+
+.col-sm-3 h3
+{
+  padding: 10px;
+  background-color: #3b84ad;
+  margin: 0;
+  font-size: 30px;
+}
+
+.col-sm-3 p
+{
+  margin: 0;
+  padding: 10px;
+  background-color: white;
+  font-size: 16px;
+}
+
+.picto
+{
+  height: 40px;
+  margin-right: 10px;
+}
+
 footer
 {
+  position: absolute;
+  bottom: 0;
   background-color: #2d3134;
   color: white;
   text-align: center;
   padding: 20px;
   font-size: 20px;
+  width: 100%;
 }

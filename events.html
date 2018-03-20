@@ -2,7 +2,7 @@
 <html lang="fr">
     <head>
         <title>Evénements - QualiPaper</title>
-        <link rel="icon" type="image/png" href="images/dessin.svg" />
+        <link rel="icon" type="image/png" href="pictures/favicon.svg" />
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -14,6 +14,75 @@
     </head>
 
     <body>
+      <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      <h4 class="modal-title">Ajout d'un événement</h4>
+                  </div>
+
+                  <div class="modal-body">
+                    <form id="formulaire" method="post">
+                        <p>
+                          <label for="titre">Titre</label>
+                          <input name="titre" id="titre" type="text" />
+                          <label class="desc"></label>
+                        </p>
+
+                        <p>
+                          <label for="lieu">Lieu</label>
+                          <input name="lieu" id="lieu" type="text" />
+                          <label class="desc"></label>
+                        </p>
+
+                        <p>
+                          <label for="duree">Durée</label>
+                          <input name="duree" id="duree" type="number" step="1" min="1" max="24"/>
+                          <label class="desc"></label>
+                        </p>
+
+                        <p>
+                          <label for="type">Type</label>
+                          <select name="type" id="type">
+                              <option value="none">Aucune selection</option>
+                              <option value="enfants">Enfants</option>
+                              <option value="repas">Repas</option>
+                              <option value="auberge_espagnole">Auberge espagnole</option>
+                              <option value="soiree">Soirée</option>
+                              <option value="thematique_journee">Journée à thème</option>
+                          </select>
+                          <label class="desc"></label>
+                        </p>
+
+                        <p>
+                          <label for="date">Date</label>
+                          <input name="date" id="date" type="date"/>
+                          <label class="desc"></label>
+                        </p>
+
+                        <p>
+                          <label for="heure">Heure</label>
+                          <input name="heure" id="heure" type="number" step="1" min="0" max="23"/>
+                          <label class="desc"></label>
+                        </p>
+
+                        <p>
+                          <label for="descriptif">Description</label>
+                          <input name="descriptif" id="descriptif" type="text" />
+                          <label class="desc"></label>
+                        </p>
+
+                        <p>
+                          <input type="submit" value="Valider" id="valider" />
+                        </p>
+                      </form>
+                  </div>
+              </div>
+            </div>
+        </div>
+
         <div id="main">
           <div id="top">
             <img src="pictures/logo.svg" />
@@ -34,7 +103,14 @@
           </nav>
 
           <div id="content">
+              <div id="plus" data-toggle="modal" data-target="#myModal">
+                  <img src="pictures/plus.svg" /> Ajouter un événement
+              </div>
 
+              <h1>Liste des événements</h1>
+
+              <div id="mini-events">
+              </div>
           </div>
 
           <footer>
