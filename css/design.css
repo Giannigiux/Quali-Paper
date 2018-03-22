@@ -58,11 +58,39 @@ body
   border: 1px solid #3b84ad;
 }
 
-.modal-body #valider
+#sub
 {
+  float: right;
+  height: 30px;
+  width: 300px;
   background-color: #3b84ad;
+  border: 0;
+  border: 1px solid #3b84ad;
   color: white;
   font-weight: bold;
+}
+
+form input.focusInput
+{
+  border: 2px solid #1E527E;
+  box-shadow: 0 0 8px white;
+}
+
+form input.incompleteInput
+{
+  border: 2px solid #BF222D;
+}
+
+form input.completeInput
+{
+  border: 2px solid #2FA21D;
+}
+
+.desc
+{
+  font-size: 16px;
+  font-style: italic;
+  color: #BF222D;
 }
 
 #connexion
@@ -286,7 +314,7 @@ h1
   padding: 10px;
   background-color: #3b84ad;
   margin: 0;
-  font-size: 30px;
+  font-size: 28px;
 }
 
 .col-sm-3 p
@@ -303,6 +331,18 @@ h1
   margin-right: 10px;
 }
 
+.remove
+{
+  opacity: 0.7;
+  height: 30px;
+  float: right;
+}
+
+.remove:hover
+{
+  cursor: pointer;
+}
+
 footer
 {
   position: absolute;
@@ -313,4 +353,10 @@ footer
   padding: 20px;
   font-size: 20px;
   width: 100%;
+}
+
+*
+{
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
