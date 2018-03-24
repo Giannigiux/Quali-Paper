@@ -1,11 +1,13 @@
 var     form = (function() {
   let   connexion = document.getElementById('connexion');
   let   main = document.getElementById('main');
+  let   footer = document.getElementById('footer');
   let   pseudof = document.getElementById('pseudo');
   let   passwordf = document.getElementById('password');
   let   sub = document.getElementById('sub');
 
   main.style.display = 'none';
+  footer.style.display = 'none';
 
   function  checkId() {
     var database = firebase.database();
@@ -15,6 +17,7 @@ var     form = (function() {
       if (snapshot.val()[pseudof.value] && snapshot.val()[pseudof.value]['password'] === passwordf.value) {
         connexion.style.display = 'none';
         main.style.display = 'block';
+        footer.style.display = 'block';
       }
       else {
         pseudof.value = '';
