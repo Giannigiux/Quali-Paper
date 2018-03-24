@@ -1,0 +1,17 @@
+@media screen and (max-width: 1080px)
+{
+  #connexion img
+  {
+    width: 50%;
+  }
+
+  #connexion #myForm
+  {
+    width: 50%;
+  }
+
+  .col-sm-4 p img
+  {
+    height: 280px;
+  }
+}
