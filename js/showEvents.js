@@ -1,8 +1,33 @@
 var   showEvents = (function() {
   var eventsRef = firebase.database().ref('events');
-  var number = 0;
+  var eventsList = [];
+  var miniEvents = document.getElementById('mini-events');
+  var searchInput = document.getElementById('searchInput');
+  var searchBtn = document.getElementById('searchBtn');
+
+  function simpleSearch() {
+    if (searchInput.value.length < 1) {
+      alert('Vous devez spécifier au moins un caractère.');
+    }
+    else {
+      while (miniEvents.firstChild) {
+        miniEvents.removeChild(miniEvents.firstChild);
+      }
+      for (i = 0; i < eventsList.length; i++) {
+        if (eventsList[i].titre.toUpperCase().search(searchInput.value.toUpperCase()) > -1)
+          dispEvent(eventsList[i]);
+      }
+    }
+  }
+
+  function  orderEventsByDate() {
+    eventsList.sort(function(event1, event2) {
+      return new Date(event2.date) - new Date(event1.date);
+    });
+  }
 
   function  deleteEvent() {
+    // On récupère tous les remove
     var   events = document.getElementsByClassName('remove');
 
     for (i = 0; i < events.length; i++) {
@@ -15,11 +40,11 @@ var   showEvents = (function() {
     }
   }
 
-  function  dispEvent(element) {
+  function  dispEvent(event) {
+    var   h3Content = document.createTextNode(event.titre);
     var   events = document.getElementById('mini-events');
     var   newDiv = document.createElement('div');
     var   h3 = document.createElement('h3');
-    var   h3Content = document.createTextNode(element.titre);
     var   p = document.createElement('p');
     var   picto = document.createElement('img');
     var   remove = document.createElement('img');
@@ -29,27 +54,54 @@ var   showEvents = (function() {
     h3.appendChild(picto);
     h3.appendChild(h3Content);
     h3.appendChild(remove);
-    p.innerHTML = '<h5><b>Date : </b>' + element.date + ' à ' + element.heure + 'h</h5><h5><b>Durée : </b>' + element.duree + 'h</h5></h5><h5><b>Lieu : </b>' + element.lieu + '</h5>' + element.descriptif;
+    p.innerHTML = '<h5><b>Date : </b>' + event.date + ' à ' + event.heure + 'h</h5><h5><b>Durée : </b>' + event.duree + 'h</h5></h5><h5><b>Lieu : </b>' + event.lieu + '</h5>' + event.descriptif;
     picto.classList.add('picto');
-    picto.src = 'pictures/pictos/' + element.pictogramme + '.svg';
+    picto.src = 'pictures/pictos/' + event.pictogramme + '.svg';
+    picto.title = event.pictogramme;
     remove.classList.add('remove');
     remove.title = 'Supprimer';
     remove.src = 'pictures/delete.svg';
-    remove.id = number;
-    remove.setAttribute('data-toggle', "modal");
-    remove.setAttribute('data-target', "#modalDeleteEvent");
+    remove.id = event.id;
     newDiv.appendChild(h3);
     newDiv.appendChild(p);
     events.appendChild(newDiv);
+
+    // On affiche "grisé" les événements passés
+    var myDate = event.date.split('-');
+
+    myDate = myDate[1] + '/' + myDate[2] + '/' + myDate[0];
+    myDate = new Date(myDate).getTime();
+    if (myDate < Date.now()) {
+      newDiv.style.opacity = 0.5;
+    }
   }
 
   eventsRef.once('value').then(function(snapshot) {
+    // On parcoure chaque événement
     snapshot.val().forEach(function(element) {
-      dispEvent(element);
-      number++;
+      // On ajoute chaque événement dans un tableau
+      eventsList.push(element);
     });
+    // On met les événements dans l'ordre décroissant
+    orderEventsByDate();
+    // On affiche les événements
+    for (i = 0; i < eventsList.length; i++) {
+      dispEvent(eventsList[i]);
+    }
+    // On ajoute un événement au click pour supprimer les événements
     deleteEvent();
   }, function(error) {
     console.log('Error: ' + error.code);
+  });
+
+  // Click sur bouton de recherche
+  searchBtn.addEventListener('click', function(e) {
+    simpleSearch();
+  });
+
+  document.addEventListener('keypress', function(event) {
+    if (event.key === 'Enter') {
+      simpleSearch();
+    }
   });
 })();

@@ -1,7 +1,16 @@
 var     form = (function() {
+  let   eventsRef = firebase.database().ref('events');
   let   input = document.getElementsByTagName('input');
   let   select = document.getElementById('type');
   let   sub = document.getElementById('sub');
+  let   eventsList = [];
+
+  // On récupère les événements dans une liste
+  eventsRef.once('value').then(function(snapshot) {
+    snapshot.val().forEach(function(element) {
+      eventsList.push(element);
+    });
+  });
 
   // Affichage du champ complété
   function    complete(element) {
@@ -16,20 +25,22 @@ var     form = (function() {
     element.nextElementSibling.innerHTML = error;
   }
 
+  // Ajout du nouvel élément à la base de données
   function    eventToFirebase() {
-    var   eventsRef = firebase.database().ref('events');
     var   number = 0;
+    var   lastId = eventsList[eventsList.length - 1].id;
 
     eventsRef.once('value').then(function(snapshot) {
       number = snapshot.val().length;
-      firebase.database().ref('events/' + number.toString()).set({
+      firebase.database().ref('events/' + (lastId + 1).toString()).set({
         date: input[3].value,
         descriptif: input[5].value,
         duree: input[2].value,
         heure: input[4].value,
         lieu: input[1].value,
         pictogramme: select.value,
-        titre: input[0].value
+        titre: input[0].value,
+        id: lastId + 1
       }), window.location = 'events.html';
     });
   }
@@ -56,7 +67,7 @@ var     form = (function() {
         (!parseInt(this.value) || this.value < 1 || this.value > 24) ? incomplete(this, 'Nombre compris entre 1 et 24') : complete(this);
         break;
         case 'heure':
-        (!parseInt(this.value) || this.value < 0 || this.value > 23) ? incomplete(this, 'Heure comprise entre 0 et 23') : complete(this);
+        (!parseInt(this.value) || this.value < 1 || this.value > 24) ? incomplete(this, 'Heure comprise entre 0 et 23') : complete(this);
         break;
         case 'descriptif':
         (this.value.length < 1 || this.value.length > 125) ? incomplete(this, 'Doit comprendre 1 à 125 caractères') : complete(this);
@@ -94,7 +105,7 @@ var     form = (function() {
         (!parseInt(currentInput.value) || currentInput.value < 1 || currentInput.value > 24) ? (check = false) : (data.push(currentInput.value));
         break;
         case 'heure':
-        (!parseInt(currentInput.value) || currentInput.value < 0 || currentInput.value > 23) ? (check = false) : (data.push(currentInput.value));
+        (!parseInt(currentInput.value) || currentInput.value < 1 || currentInput.value > 24) ? (check = false) : (data.push(currentInput.value));
         break;
         case 'descriptif':
         (currentInput.value.length < 1 || currentInput.value.length > 125) ? (check = false) : (data.push(currentInput.value));

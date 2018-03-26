@@ -13,8 +13,9 @@ var     form = (function() {
     var database = firebase.database();
     var usersRef = database.ref('users');
 
-    usersRef.on('value', function(snapshot) {
+    usersRef.once('value').then(function(snapshot) {
       if (snapshot.val()[pseudof.value] && snapshot.val()[pseudof.value]['password'] === passwordf.value) {
+        firebase.database().ref('users/' + pseudof.value).update({last_connection: Date.now()});
         connexion.style.display = 'none';
         main.style.display = 'block';
         footer.style.display = 'block';
@@ -23,8 +24,6 @@ var     form = (function() {
         pseudof.value = '';
         passwordf.value = '';
       }
-    }, function(error) {
-      console.log('Error: ' + error.code);
     });
   }
 
