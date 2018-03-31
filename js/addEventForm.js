@@ -4,6 +4,7 @@ var     form = (function() {
   let   select = document.getElementById('type');
   let   sub = document.getElementById('sub');
   let   eventsList = [];
+  let   myData = [];
 
   // On récupère les événements dans une liste
   eventsRef.once('value').then(function(snapshot) {
@@ -26,20 +27,20 @@ var     form = (function() {
   }
 
   // Ajout du nouvel élément à la base de données
-  function    eventToFirebase() {
+  function    eventToFirebase(myData) {
     var   number = 0;
     var   lastId = eventsList[eventsList.length - 1].id;
 
     eventsRef.once('value').then(function(snapshot) {
       number = snapshot.val().length;
       firebase.database().ref('events/' + (lastId + 1).toString()).set({
-        date: input[3].value,
-        descriptif: input[5].value,
-        duree: input[2].value,
-        heure: input[4].value,
-        lieu: input[1].value,
-        pictogramme: select.value,
-        titre: input[0].value,
+        date: myData[3],
+        descriptif: myData[5],
+        duree: myData[2],
+        heure: myData[4],
+        lieu: myData[1],
+        pictogramme: myData[6],
+        titre: myData[0],
         id: lastId + 1
       }), window.location = 'events.html';
     });
@@ -90,37 +91,36 @@ var     form = (function() {
   // Validation du formulaire
   sub.addEventListener('click', function(e) {
     var   check = true;
-    var   data = [];
 
     for (let currentInput of input)
     {
       switch (currentInput.id)  {
         case 'titre':
-        (currentInput.value.length < 2 || currentInput.value.length > 16) ? (check = false) : (data.push(currentInput.value));
+        (currentInput.value.length < 2 || currentInput.value.length > 16) ? (check = false) : (myData.push(currentInput.value));
         break;
         case 'lieu':
-        (currentInput.value.length < 2 || currentInput.value.length > 20) ? (check = false) : (data.push(currentInput.value));
+        (currentInput.value.length < 2 || currentInput.value.length > 20) ? (check = false) : (myData.push(currentInput.value));
         break;
         case 'duree':
-        (!parseInt(currentInput.value) || currentInput.value < 1 || currentInput.value > 24) ? (check = false) : (data.push(currentInput.value));
+        (!parseInt(currentInput.value) || currentInput.value < 1 || currentInput.value > 24) ? (check = false) : (myData.push(currentInput.value));
         break;
         case 'heure':
-        (!parseInt(currentInput.value) || currentInput.value < 1 || currentInput.value > 24) ? (check = false) : (data.push(currentInput.value));
+        (!parseInt(currentInput.value) || currentInput.value < 1 || currentInput.value > 24) ? (check = false) : (myData.push(currentInput.value));
         break;
         case 'descriptif':
-        (currentInput.value.length < 1 || currentInput.value.length > 125) ? (check = false) : (data.push(currentInput.value));
+        (currentInput.value.length < 1 || currentInput.value.length > 125) ? (check = false) : (myData.push(currentInput.value));
         break;
         case 'date':
-        (!currentInput.value) ? (check = false) : (data.push(currentInput.value));
+        (!currentInput.value) ? (check = false) : (myData.push(currentInput.value));
         break;
       }
     }
 
     // Vérification du select
-    (select.value === 'none') ? (check = false) : (data.push(select.value));
+    (select.value === 'none') ? (check = false) : (myData.push(select.value));
 
     // Si tout est bon, on ajoute à la base de données
-    (check === true) ? (eventToFirebase()) : (data = []);
+    (check === true) ? (eventToFirebase(myData)) : (myData = []);
   });
 
 })();
