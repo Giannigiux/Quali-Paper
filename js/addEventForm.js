@@ -82,10 +82,7 @@
 
   // Vérification du select
   select.addEventListener('blur', function() {
-    if (this.value === 'none')
-      incomplete(this, 'Vous devez choisir un type.')
-    else
-      complete(this);
+    (this.value === 'none') ? incomplete(this, 'Vous devez choisir un type.') : complete(this);
   });
 
   // Validation du formulaire
