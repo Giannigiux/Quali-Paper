@@ -1,4 +1,4 @@
-var     form = (function() {
+(function() {
   let   eventsRef = firebase.database().ref('events');
   let   input = document.getElementsByTagName('input');
   let   select = document.getElementById('type');
